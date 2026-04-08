@@ -1,29 +1,231 @@
 {%- comment -%}
   SmartNest Pet Tech - Collection Template
+  Optimized product listing page with modern design
 {%- endcomment -%}
 
-<div class="container">
-  <h1 class="collection__title">{{ collection.title }}</h1>
-  <p class="collection__description">{{ collection.description }}</p>
+<div class="collection-page" style="max-width: 1400px; margin: 0 auto; padding: 40px 20px;">
   
-  <div class="product-grid">
-    {%- for product in collection.products -%}
-      <div class="product-card">
-        {%- if product.featured_media -%}
-          <img 
-            src="{{ product.featured_media | image_url: width: 600 }}" 
-            alt="{{ product.title }}"
-            class="product-card__image"
-            loading="lazy"
-          >
-        {%- endif -%}
-        
-        <div class="product-card__info">
-          <h3 class="product-card__title">{{ product.title }}</h3>
-          <p class="product-card__price">{{ product.price | money }}</p>
-          <a href="{{ product.url }}" class="btn">View Product</a>
-        </div>
+  <!-- Collection Header -->
+  <section class="collection-header" style="text-align: center; padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; margin-bottom: 60px; border-radius: 16px;">
+    <h1 style="font-size: 48px; margin-bottom: 15px; font-weight: 700;">{{ collection.title }}</h1>
+    <p style="font-size: 20px; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+      {{ collection.description | default: 'Discover our complete range of smart pet care products. From智能摄像头 to GPS trackers, automatic feeders to smart litter boxes - everything you need to keep your pets safe, healthy, and happy!' }}
+    </p>
+    {% if collection.products_count > 0 %}
+      <p style="font-size: 16px; opacity: 0.8; margin-top: 20px;">
+        📦 {{ collection.products_count }} Products | 🌍 Worldwide Shipping | ✅ 30-Day Returns
+      </p>
+    {% endif %}
+  </section>
+
+  <!-- Filter & Sort Bar -->
+  <section class="collection-toolbar" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; padding: 20px; background: #f8f9fa; border-radius: 12px;">
+    
+    <!-- Product Count -->
+    <div class="product-count" style="color: #666; font-size: 16px;">
+      <strong>{{ collection.products_count }}</strong> Products
+      {% if current_tags %}
+        <span style="margin-left: 10px;">🏷️ Filtered by: {{ current_tags | join: ', ' }}</span>
+        <a href="{{ collection.url }}" style="margin-left: 10px; color: #667eea; text-decoration: none;">Clear All</a>
+      {% endif %}
+    </div>
+
+    <!-- Sort & Filter -->
+    <div class="collection-filters" style="display: flex; gap: 15px;">
+      
+      <!-- Sort By -->
+      <div class="sort-by" style="position: relative;">
+        <select onchange="location = this.value;" style="padding: 12px 20px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; background: #fff; cursor: pointer;">
+          <option value="{{ collection.url }}" {% if collection.sort_by == blank %}selected{% endif %}>Featured</option>
+          <option value="{{ collection.url }}?sort_by=best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+          <option value="{{ collection.url }}?sort_by=title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
+          <option value="{{ collection.url }}?sort_by=price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+          <option value="{{ collection.url }}?sort_by=price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+          <option value="{{ collection.url }}?sort_by=created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Newest</option>
+        </select>
       </div>
-    {%- endfor -%}
-  </div>
+
+      <!-- Filter by Type -->
+      <div class="filter-by" style="position: relative;">
+        <select onchange="if(this.value) window.location.href='{{ collection.url }}?constraint=' + this.value" style="padding: 12px 20px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; background: #fff; cursor: pointer;">
+          <option value="">All Types</option>
+          {% for type in collection.all_types %}
+            <option value="{{ type | handle }}" {% if current_type == type %}selected{% endif %}>{{ type }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="products-grid" style="margin-bottom: 80px;">
+    
+    {% if collection.products_count > 0 %}
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 40px;">
+        
+        {% for product in collection.products %}
+          
+          <div class="product-card" style="background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; position: relative;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.08)'">
+            
+            <!-- Product Image -->
+            <div class="product-image" style="position: relative; overflow: hidden; height: 320px;">
+              <a href="{{ product.url }}">
+                {% if product.featured_media %}
+                  <img src="{{ product.featured_media | image_url: width: 600 }}" alt="{{ product.title }}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                {% else %}
+                  <div style="width: 100%; height: 100%; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 96px;">
+                    📦
+                  </div>
+                {% endif %}
+              </a>
+              
+              <!-- Badges -->
+              <div style="position: absolute; top: 15px; left: 15px; display: flex; flex-direction: column; gap: 10px;">
+                {% if product.compare_at_price > product.price %}
+                  <span style="background: #ff4444; color: #fff; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;">
+                    SALE {{ product.compare_at_price | minus: product.price | times: 100 | divided_by: product.compare_at_price }}% OFF
+                  </span>
+                {% endif %}
+                {% if product.available == false %}
+                  <span style="background: #6c757d; color: #fff; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;">
+                    SOLD OUT
+                  </span>
+                {% endif %}
+                {% if product.tags contains 'New' %}
+                  <span style="background: #28a745; color: #fff; padding: 6px 14px; border-radius: 50px; font-size: 13px; font-weight: 600;">
+                    NEW
+                  </span>
+                {% endif %}
+              </div>
+              
+              <!-- Quick Add Button -->
+              <div style="position: absolute; bottom: 15px; right: 15px; opacity: 0; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                <form action="/cart/add" method="post" style="margin: 0;">
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                  <button type="submit" style="padding: 12px 20px; background: #fff; color: #667eea; border: none; border-radius: 50px; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" onmouseover="this.style.background='#667eea'; this.style.color='#fff'" onmouseout="this.style.background='#fff'; this.style.color='#667eea'">
+                    ⚡ Quick Add
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Product Info -->
+            <div class="product-info" style="padding: 25px;">
+              
+              <!-- Product Type -->
+              {% if product.type %}
+                <p style="color: #667eea; font-size: 13px; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px;">
+                  {{ product.type }}
+                </p>
+              {% endif %}
+              
+              <!-- Product Title -->
+              <h3 style="font-size: 20px; color: #212529; margin-bottom: 12px; line-height: 1.4; height: 56px; overflow: hidden;">
+                <a href="{{ product.url }}" style="color: #212529; text-decoration: none;">{{ product.title }}</a>
+              </h3>
+              
+              <!-- Product Tags -->
+              {% if product.tags.size > 0 %}
+                <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px;">
+                  {% for tag in product.tags limit: 3 %}
+                    <span style="background: #f8f9fa; color: #666; padding: 4px 12px; border-radius: 50px; font-size: 12px;">
+                      {{ tag }}
+                    </span>
+                  {% endfor %}
+                </div>
+              {% endif %}
+              
+              <!-- Price -->
+              <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 15px;">
+                <span style="font-size: 28px; color: #667eea; font-weight: 700;">{{ product.price | money }}</span>
+                {% if product.compare_at_price > product.price %}
+                  <span style="font-size: 18px; color: #999; text-decoration: line-through;">{{ product.compare_at_price | money }}</span>
+                {% endif %}
+              </div>
+              
+              <!-- Variant Count -->
+              {% if product.variants.size > 1 %}
+                <p style="color: #666; font-size: 13px; margin-bottom: 15px;">
+                  {{ product.variants.size }} variants available
+                </p>
+              {% endif %}
+              
+              <!-- Add to Cart Button -->
+              <form action="/cart/add" method="post" style="margin: 0;">
+                <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                <button type="submit" style="width: 100%; padding: 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; border: none; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(102, 126, 234, 0.6)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.4)'">
+                  {% if product.available %}
+                    🛒 Add to Cart
+                  {% else %}
+                    🔔 Notify Me
+                  {% endif %}
+                </button>
+              </form>
+              
+            </div>
+          </div>
+        
+        {% endfor %}
+      
+      </div>
+
+      <!-- Pagination -->
+      {% if paginate.pages > 1 %}
+        <div class="pagination" style="text-align: center; margin-top: 60px;">
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">← Previous</a>
+          {% endif %}
+          
+          <span style="display: inline-block; padding: 14px 28px; color: #666; font-size: 16px;">
+            Page {{ paginate.current_page }} of {{ paginate.pages }}
+          </span>
+          
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">Next →</a>
+          {% endif %}
+        </div>
+      {% endif %}
+
+    {% else %}
+      
+      <!-- No Products -->
+      <div style="text-align: center; padding: 100px 20px;">
+        <div style="font-size: 120px; margin-bottom: 30px;">🔍</div>
+        <h2 style="font-size: 36px; color: #212529; margin-bottom: 20px;">No products found</h2>
+        <p style="color: #666; font-size: 18px; margin-bottom: 40px;">Try adjusting your filters or check back later for new products!</p>
+        <a href="/collections/all" style="display: inline-block; padding: 16px 40px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 18px; font-weight: 600;">View All Products</a>
+      </div>
+    
+    {% endif %}
+  
+  </section>
+
+  <!-- Collection Benefits -->
+  <section class="collection-benefits" style="padding: 60px 0; background: #f8f9fa; border-radius: 16px; margin-bottom: 80px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center;">
+      <div>
+        <div style="font-size: 56px; margin-bottom: 15px;">🌍</div>
+        <h3 style="font-size: 20px; color: #212529; margin-bottom: 10px;">Worldwide Shipping</h3>
+        <p style="color: #666; line-height: 1.6;">Free shipping on orders over $50 to 50+ countries</p>
+      </div>
+      <div>
+        <div style="font-size: 56px; margin-bottom: 15px;">↩️</div>
+        <h3 style="font-size: 20px; color: #212529; margin-bottom: 10px;">30-Day Returns</h3>
+        <p style="color: #666; line-height: 1.6;">Hassle-free returns with full refund guarantee</p>
+      </div>
+      <div>
+        <div style="font-size: 56px; margin-bottom: 15px;">🔒</div>
+        <h3 style="font-size: 20px; color: #212529; margin-bottom: 10px;">Secure Payment</h3>
+        <p style="color: #666; line-height: 1.6;">256-bit SSL encryption for safe checkout</p>
+      </div>
+      <div>
+        <div style="font-size: 56px; margin-bottom: 15px;">💬</div>
+        <h3 style="font-size: 20px; color: #212529; margin-bottom: 10px;">24/7 Support</h3>
+        <p style="color: #666; line-height: 1.6;">Dedicated customer support team</p>
+      </div>
+    </div>
+  </section>
+
 </div>
