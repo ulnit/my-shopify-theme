@@ -1,0 +1,86 @@
+{%- comment -%}
+  SmartNest Pet Tech - Contact Page Template
+{%- endcomment -%}
+
+<div class="contact-page" style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+  
+  <!-- Hero -->
+  <section class="contact-hero" style="text-align: center; padding: 80px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; margin-bottom: 60px; border-radius: 16px;">
+    <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: 700;">Get in Touch</h1>
+    <p style="font-size: 20px; opacity: 0.9;">We'd love to hear from you! Reach out to us with any questions or feedback.</p>
+  </section>
+
+  <!-- Contact Info -->
+  <section class="contact-info" style="padding: 60px 0;">
+    <div class="container">
+      <h2 style="font-size: 36px; text-align: center; margin-bottom: 60px; color: #212529;">Contact Information</h2>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+        
+        <!-- Customer Support -->
+        <div style="padding: 40px; background: #f8f9fa; border-radius: 16px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 20px;">💬</div>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: #212529;">Customer Support</h3>
+          <div style="color: #666; line-height: 2; font-size: 16px;">
+            <p style="margin-bottom: 10px;">📧 <a href="mailto:support@smartnest.com" style="color: #667eea;">support@smartnest.com</a></p>
+            <p style="margin-bottom: 10px;">📱 +86 755 1234 5678</p>
+            <p>💬 Live Chat: Available 9:00 AM - 9:00 PM (GMT+8)</p>
+          </div>
+        </div>
+
+        <!-- Business Address -->
+        <div style="padding: 40px; background: #f8f9fa; border-radius: 16px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 20px;">🏢</div>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: #212529;">Business Address</h3>
+          <div style="color: #666; line-height: 2; font-size: 16px;">
+            <p style="margin-bottom: 10px;"><strong>SmartNest Pet Tech Co., Ltd.</strong></p>
+            <p style="margin-bottom: 10px;">Taoyuan Community, Bao'an District</p>
+            <p style="margin-bottom: 10px;">Shenzhen, Guangdong 518101</p>
+            <p>China</p>
+          </div>
+        </div>
+
+        <!-- Business Hours -->
+        <div style="padding: 40px; background: #f8f9fa; border-radius: 16px; text-align: center;">
+          <div style="font-size: 48px; margin-bottom: 20px;">⏰</div>
+          <h3 style="font-size: 24px; margin-bottom: 15px; color: #212529;">Business Hours</h3>
+          <div style="color: #666; line-height: 2; font-size: 16px;">
+            <p style="margin-bottom: 10px;">Monday - Friday: 9:00 AM - 6:00 PM</p>
+            <p style="margin-bottom: 10px;">Saturday: 10:00 AM - 4:00 PM</p>
+            <p>Sunday: Closed</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-form" style="padding: 60px 0;">
+    <div class="container" style="padding: 0 20px;">
+      <h2 style="font-size: 36px; text-align: center; margin-bottom: 40px; color: #212529;">Send Us a Message</h2>
+      
+      <div style="max-width: 700px; margin: 0 auto; background: #f8f9fa; padding: 40px; border-radius: 16px;">
+        <form action="/contact" method="post" id="contact-form">
+          <div style="margin-bottom: 20px;">
+            <label for="name" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">Name *</label>
+            <input type="text" id="name" name="contact[name]" required style="width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;">
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <label for="email" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">Email *</label>
+            <input type="email" id="email" name="contact[email]" required style="width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px;">
+          </div>
+          
+          <div style="margin-bottom: 20px;">
+            <label for="message" style="display: block; margin-bottom: 8px; font-weight: 600; color: #212529;">Message *</label>
+            <textarea id="message" name="contact[body]" rows="6" required style="width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 8px; font-size: 16px; resize: vertical;"></textarea>
+          </div>
+          
+          <button type="submit" class="btn" style="width: 100%; background: #667eea; color: #fff; padding: 16px; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer;">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</div>
