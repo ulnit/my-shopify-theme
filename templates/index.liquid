@@ -1,9 +1,190 @@
 {%- comment -%}
   SmartNest Pet Tech - Homepage Template
-  只引用 main-page section
+  Complete with all shop content
 {%- endcomment -%}
 
-<!-- 首页内容 -->
+<!-- Homepage Content -->
 <div class="homepage">
   {% section 'main-page' %}
 </div>
+
+<!-- Featured Collections Section -->
+<section class="featured-collections" style="padding: 60px 0; background: #fff;">
+  <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+    <h2 style="text-align: center; font-size: 36px; color: #212529; margin-bottom: 50px;">Shop by Category</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+      <!-- Pet Cameras -->
+      <a href="/collections/pet-cameras" style="text-decoration: none; text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px; transition: transform 0.3s ease;">
+        <div style="font-size: 48px; margin-bottom: 15px;">📹</div>
+        <h3 style="font-size: 18px; color: #212529; margin-bottom: 10px;">Pet Cameras</h3>
+        <p style="color: #666; font-size: 14px;">2 Products</p>
+      </a>
+
+      <!-- Pet Feeders -->
+      <a href="/collections/pet-feeders" style="text-decoration: none; text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px; transition: transform 0.3s ease;">
+        <div style="font-size: 48px; margin-bottom: 15px;">🍽️</div>
+        <h3 style="font-size: 18px; color: #212529; margin-bottom: 10px;">Pet Feeders</h3>
+        <p style="color: #666; font-size: 14px;">1 Product</p>
+      </a>
+
+      <!-- Pet Trackers -->
+      <a href="/collections/pet-trackers" style="text-decoration: none; text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px; transition: transform 0.3s ease;">
+        <div style="font-size: 48px; margin-bottom: 15px;">📍</div>
+        <h3 style="font-size: 18px; color: #212529; margin-bottom: 10px;">GPS Trackers</h3>
+        <p style="color: #666; font-size: 14px;">1 Product</p>
+      </a>
+
+      <!-- Pet Care -->
+      <a href="/collections/pet-care" style="text-decoration: none; text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px; transition: transform 0.3s ease;">
+        <div style="font-size: 48px; margin-bottom: 15px;">💊</div>
+        <h3 style="font-size: 18px; color: #212529; margin-bottom: 10px;">Pet Care</h3>
+        <p style="color: #666; font-size: 14px;">1 Product</p>
+      </a>
+
+      <!-- Pet Accessories -->
+      <a href="/collections/pet-accessories" style="text-decoration: none; text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px; transition: transform 0.3s ease;">
+        <div style="font-size: 48px; margin-bottom: 15px;">🎾</div>
+        <h3 style="font-size: 18px; color: #212529; margin-bottom: 10px;">Accessories</h3>
+        <p style="color: #666; font-size: 14px;">3 Products</p>
+      </a>
+
+      <!-- Pet Bundles -->
+      <a href="/collections/pet-bundles" style="text-decoration: none; text-align: center; padding: 30px; background: #f8f9fa; border-radius: 12px; transition: transform 0.3s ease;">
+        <div style="font-size: 48px; margin-bottom: 15px;">🎁</div>
+        <h3 style="font-size: 18px; color: #212529; margin-bottom: 10px;">Bundles</h3>
+        <p style="color: #666; font-size: 14px;">1 Product</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-us" style="padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff;">
+  <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+    <h2 style="text-align: center; font-size: 36px; margin-bottom: 50px;">Why SmartNest?</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+      <div style="text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 15px;">🚀</div>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">Smart Technology</h3>
+        <p style="opacity: 0.9; line-height: 1.6;">IoT & AI-powered devices for modern pet care</p>
+      </div>
+      
+      <div style="text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 15px;">✓</div>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">Quality Assured</h3>
+        <p style="opacity: 0.9; line-height: 1.6;">All products tested and certified</p>
+      </div>
+      
+      <div style="text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 15px;">💬</div>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">24/7 Support</h3>
+        <p style="opacity: 0.9; line-height: 1.6;">Dedicated pet care experts</p>
+      </div>
+      
+      <div style="text-align: center;">
+        <div style="font-size: 48px; margin-bottom: 15px;">📦</div>
+        <h3 style="font-size: 20px; margin-bottom: 10px;">Free Shipping</h3>
+        <p style="opacity: 0.9; line-height: 1.6;">On orders over $50 worldwide</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Blog Posts Section -->
+<section class="latest-blog" style="padding: 60px 0; background: #f8f9fa;">
+  <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+    <h2 style="text-align: center; font-size: 36px; color: #212529; margin-bottom: 50px;">Latest from Our Blog</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+      <!-- Blog Post 1 -->
+      <article style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h3 style="font-size: 20px; color: #212529; margin-bottom: 15px;">
+          <a href="/blogs/news/5-ways-smart-technology-is-revolutionizing-pet-care" style="color: #212529; text-decoration: none;">
+            5 Ways Smart Technology is Revolutionizing Pet Care
+          </a>
+        </h3>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+          Discover how IoT and AI are transforming the way we care for our furry friends...
+        </p>
+        <a href="/blogs/news/5-ways-smart-technology-is-revolutionizing-pet-care" style="color: #667eea; text-decoration: none; font-weight: 600;">Read More →</a>
+      </article>
+
+      <!-- Blog Post 2 -->
+      <article style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h3 style="font-size: 20px; color: #212529; margin-bottom: 15px;">
+          <a href="/blogs/news/how-to-choose-the-right-automatic-feeder-for-your-pet" style="color: #212529; text-decoration: none;">
+            How to Choose the Right Automatic Feeder
+          </a>
+        </h3>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+          A comprehensive guide to selecting the perfect automatic feeder based on your pet's needs...
+        </p>
+        <a href="/blogs/news/how-to-choose-the-right-automatic-feeder-for-your-pet" style="color: #667eea; text-decoration: none; font-weight: 600;">Read More →</a>
+      </article>
+
+      <!-- Blog Post 3 -->
+      <article style="background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+        <h3 style="font-size: 20px; color: #212529; margin-bottom: 15px;">
+          <a href="/blogs/news/gps-pet-trackers-are-they-worth-it" style="color: #212529; text-decoration: none;">
+            GPS Pet Trackers: Are They Worth It?
+          </a>
+        </h3>
+        <p style="color: #666; line-height: 1.6; margin-bottom: 20px;">
+          Everything you need to know about GPS pet trackers and how they can keep your pet safe...
+        </p>
+        <a href="/blogs/news/gps-pet-trackers-are-they-worth-it" style="color: #667eea; text-decoration: none; font-weight: 600;">Read More →</a>
+      </article>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="/blogs/news" class="btn" style="display: inline-block; background: #667eea; color: #fff; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 600;">View All Blog Posts</a>
+    </div>
+  </div>
+</section>
+
+<!-- Information Pages Section -->
+<section class="info-pages" style="padding: 60px 0; background: #fff;">
+  <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+    <h2 style="text-align: center; font-size: 36px; color: #212529; margin-bottom: 50px;">Help & Information</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+      <a href="/pages/shipping" style="padding: 25px; background: #f8f9fa; border-radius: 12px; text-align: center; text-decoration: none;">
+        <div style="font-size: 36px; margin-bottom: 10px;">🚚</div>
+        <h4 style="font-size: 16px; color: #212529; margin-bottom: 5px;">Shipping Policy</h4>
+        <p style="color: #666; font-size: 14px;">Global delivery info</p>
+      </a>
+
+      <a href="/pages/returns" style="padding: 25px; background: #f8f9fa; border-radius: 12px; text-align: center; text-decoration: none;">
+        <div style="font-size: 36px; margin-bottom: 10px;">↩️</div>
+        <h4 style="font-size: 16px; color: #212529; margin-bottom: 5px;">Returns & Refunds</h4>
+        <p style="color: #666; font-size: 14px;">30-day guarantee</p>
+      </a>
+
+      <a href="/pages/faq" style="padding: 25px; background: #f8f9fa; border-radius: 12px; text-align: center; text-decoration: none;">
+        <div style="font-size: 36px; margin-bottom: 10px;">❓</div>
+        <h4 style="font-size: 16px; color: #212529; margin-bottom: 5px;">FAQ</h4>
+        <p style="color: #666; font-size: 14px;">Common questions</p>
+      </a>
+
+      <a href="/pages/contact" style="padding: 25px; background: #f8f9fa; border-radius: 12px; text-align: center; text-decoration: none;">
+        <div style="font-size: 36px; margin-bottom: 10px;">💬</div>
+        <h4 style="font-size: 16px; color: #212529; margin-bottom: 5px;">Contact Us</h4>
+        <p style="color: #666; font-size: 14px;">Get in touch</p>
+      </a>
+
+      <a href="/pages/privacy" style="padding: 25px; background: #f8f9fa; border-radius: 12px; text-align: center; text-decoration: none;">
+        <div style="font-size: 36px; margin-bottom: 10px;">🔒</div>
+        <h4 style="font-size: 16px; color: #212529; margin-bottom: 5px;">Privacy Policy</h4>
+        <p style="color: #666; font-size: 14px;">Your data safety</p>
+      </a>
+
+      <a href="/pages/terms" style="padding: 25px; background: #f8f9fa; border-radius: 12px; text-align: center; text-decoration: none;">
+        <div style="font-size: 36px; margin-bottom: 10px;">📜</div>
+        <h4 style="font-size: 16px; color: #212529; margin-bottom: 5px;">Terms of Service</h4>
+        <p style="color: #666; font-size: 14px;">Usage terms</p>
+      </a>
+    </div>
+  </div>
+</section>
