@@ -1,13 +1,13 @@
 {%- comment -%}
   SmartNest Pet Tech - Blog Template
-  Complete with all blog posts
+  Display all blog articles
 {%- endcomment -%}
 
 <div class="blog-page" style="max-width: 1400px; margin: 0 auto; padding: 40px 20px;">
   
   <!-- Blog Header -->
   <section class="blog-header" style="text-align: center; padding: 80px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; margin-bottom: 60px; border-radius: 16px;">
-    <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: 700;">SmartNest Pet Care Blog</h1>
+    <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: 700;">{{ blog.title }}</h1>
     <p style="font-size: 20px; opacity: 0.9; max-width: 800px; margin: 0 auto;">Tips, tricks, and insights for modern pet parents!</p>
   </section>
 
@@ -15,106 +15,56 @@
   <section class="blog-posts" style="padding: 60px 0;">
     <div class="container">
       
-      <!-- Post 1 -->
-      <article class="blog-post" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 40px;">
-        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start;">
-          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 12px; text-align: center; color: #fff;">
-            <div style="font-size: 72px; margin-bottom: 20px;">📱</div>
-            <h2 style="font-size: 24px; margin-bottom: 15px;">5 Ways Smart Technology is Revolutionizing Pet Care</h2>
-            <p style="opacity: 0.9; font-size: 14px; margin-bottom: 20px;">By SmartNest Team | April 2026</p>
-            <a href="/blogs/news/5-ways-smart-technology-is-revolutionizing-pet-care" class="btn" style="display: inline-block; background: #fff; color: #667eea; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">Read More →</a>
-          </div>
-          <div>
-            <h3 style="font-size: 28px; color: #212529; margin-bottom: 20px;">How IoT and AI are Transforming Pet Care</h3>
-            <p style="color: #666; line-height: 2; font-size: 17px; margin-bottom: 20px;">
-              Remember when pet care meant just filling a bowl and hoping for the best? Those days are long gone. Today's pet parents are embracing smart technology to provide better care, deeper insights, and stronger connections with their pets – even when they're miles apart.
-            </p>
-            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 25px 0;">
-              <h4 style="font-size: 18px; color: #667eea; margin-bottom: 15px;">📊 Key Topics Covered:</h4>
-              <ul style="color: #666; line-height: 2; font-size: 16px; margin-left: 20px;">
-                <li>Real-time health monitoring with smart collars</li>
-                <li>Remote interaction through smart cameras</li>
-                <li>Automated feeding and nutrition management</li>
-                <li>GPS tracking for pet safety</li>
-                <li>AI-powered behavior insights</li>
-              </ul>
+      {% if blog.articles_count > 0 %}
+        {% for article in blog.articles limit: 10 %}
+          <article class="blog-post" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 40px;">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start;">
+              <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 12px; text-align: center; color: #fff;">
+                <div style="font-size: 72px; margin-bottom: 20px;">📰</div>
+                <h2 style="font-size: 24px; margin-bottom: 15px;">{{ article.title }}</h2>
+                <p style="opacity: 0.9; font-size: 14px; margin-bottom: 20px;">
+                  By {{ article.author }} | {{ article.published_at | date: '%B %d, %Y' }}
+                </p>
+                <a href="{{ article.url }}" class="btn" style="display: inline-block; background: #fff; color: #667eea; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">Read More →</a>
+              </div>
+              <div>
+                <div style="color: #666; line-height: 2; font-size: 17px;">
+                  {{ article.excerpt_or_content | strip_html | truncatewords: 80 }}
+                </div>
+                <div style="margin-top: 20px;">
+                  {% if article.tags.size > 0 %}
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                      {% for tag in article.tags limit: 5 %}
+                        <span style="padding: 6px 16px; background: #f8f9fa; border-radius: 50px; font-size: 14px; color: #667eea;">#{{ tag }}</span>
+                      {% endfor %}
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
             </div>
-            <p style="color: #666; line-height: 2; font-size: 17px;">
-              Let's explore five game-changing ways smart technology is revolutionizing pet care in 2026. From health monitoring to AI insights, discover how IoT devices are helping pet owners monitor their pets' health and happiness...
-            </p>
-          </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div style="text-align: center; padding: 60px 0;">
+          <h2 style="font-size: 32px; color: #212529; margin-bottom: 20px;">No articles yet</h2>
+          <p style="color: #666; font-size: 18px;">Check back soon for pet care tips and insights!</p>
         </div>
-      </article>
+      {% endif %}
 
-      <!-- Post 2 -->
-      <article class="blog-post" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 40px;">
-        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start;">
-          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 12px; text-align: center; color: #fff;">
-            <div style="font-size: 72px; margin-bottom: 20px;">🍽️</div>
-            <h2 style="font-size: 24px; margin-bottom: 15px;">How to Choose the Right Automatic Feeder</h2>
-            <p style="opacity: 0.9; font-size: 14px; margin-bottom: 20px;">By SmartNest Team | April 2026</p>
-            <a href="/blogs/news/how-to-choose-the-right-automatic-feeder-for-your-pet" class="btn" style="display: inline-block; background: #fff; color: #667eea; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">Read More →</a>
-          </div>
-          <div>
-            <h3 style="font-size: 28px; color: #212529; margin-bottom: 20px;">A Comprehensive Guide to Automatic Pet Feeders</h3>
-            <p style="color: #666; line-height: 2; font-size: 17px; margin-bottom: 20px;">
-              Automatic pet feeders have revolutionized how we care for our furry friends. Whether you work long hours, travel frequently, or simply want to maintain consistent feeding schedules, an automatic feeder can be a game-changer.
-            </p>
-            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 25px 0;">
-              <h4 style="font-size: 18px; color: #667eea; margin-bottom: 15px;">📋 What You'll Learn:</h4>
-              <ul style="color: #666; line-height: 2; font-size: 16px; margin-left: 20px;">
-                <li>Key features to consider (capacity, programming, power)</li>
-                <li>Choosing based on your pet (cats, small dogs, large dogs)</li>
-                <li>Smart features worth considering</li>
-                <li>Pro tips for success</li>
-                <li>Common mistakes to avoid</li>
-              </ul>
-            </div>
-            <p style="color: #666; line-height: 2; font-size: 17px;">
-              But with so many options on the market, how do you choose the right one? This comprehensive guide will walk you through everything you need to know about capacity, programming options, power sources, and smart features...
-            </p>
-          </div>
+      <!-- Pagination -->
+      {% if paginate.pages > 1 %}
+        <div style="text-align: center; margin-top: 40px;">
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}" class="btn" style="background: #667eea; color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 0 10px;">Previous</a>
+          {% endif %}
+          
+          <span style="color: #666; font-size: 16px;">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+          
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}" class="btn" style="background: #667eea; color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 0 10px;">Next</a>
+          {% endif %}
         </div>
-      </article>
-
-      <!-- Post 3 -->
-      <article class="blog-post" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 40px;">
-        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start;">
-          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 12px; text-align: center; color: #fff;">
-            <div style="font-size: 72px; margin-bottom: 20px;">📍</div>
-            <h2 style="font-size: 24px; margin-bottom: 15px;">GPS Pet Trackers: Are They Worth It?</h2>
-            <p style="opacity: 0.9; font-size: 14px; margin-bottom: 20px;">By SmartNest Team | April 2026</p>
-            <a href="/blogs/news/gps-pet-trackers-are-they-worth-it" class="btn" style="display: inline-block; background: #fff; color: #667eea; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">Read More →</a>
-          </div>
-          <div>
-            <h3 style="font-size: 28px; color: #212529; margin-bottom: 20px;">Everything You Need to Know About GPS Pet Trackers</h3>
-            <p style="color: #666; line-height: 2; font-size: 17px; margin-bottom: 20px;">
-              Every pet owner's worst nightmare: your dog slips out the door, your cat doesn't come home, and panic sets in. In those terrifying moments, a GPS pet tracker could be the difference between a quick recovery and a heart-wrenching search.
-            </p>
-            <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; margin: 25px 0;">
-              <h4 style="font-size: 18px; color: #667eea; margin-bottom: 15px;">📍 Complete Guide Includes:</h4>
-              <ul style="color: #666; line-height: 2; font-size: 16px; margin-left: 20px;">
-                <li>How GPS trackers work (satellites + cellular)</li>
-                <li>Key benefits (unlimited range, real-time updates)</li>
-                <li>Limitations to consider (subscription, battery)</li>
-                <li>Who should buy one (high-risk pets)</li>
-                <li>Cost-benefit analysis</li>
-                <li>Real success stories</li>
-              </ul>
-            </div>
-            <p style="color: #666; line-height: 2; font-size: 17px;">
-              But are GPS pet trackers really worth the investment? Let's dive deep into what they do, how they work, and whether they're right for your pet. From real-time tracking to geofencing alerts, discover how GPS technology can keep your pet safe...
-            </p>
-          </div>
-        </div>
-      </article>
-
-      <!-- More Posts Coming Soon -->
-      <div style="text-align: center; padding: 60px 0; background: #f8f9fa; border-radius: 16px;">
-        <h3 style="font-size: 28px; color: #212529; margin-bottom: 15px;">More Articles Coming Soon!</h3>
-        <p style="color: #666; font-size: 18px; margin-bottom: 30px;">Subscribe to our newsletter for updates on new blog posts.</p>
-        <a href="/collections/all" class="btn" style="background: #667eea; color: #fff; padding: 14px 32px; border-radius: 50px; text-decoration: none; font-weight: 600;">Shop Products</a>
-      </div>
+      {% endif %}
 
     </div>
   </section>
