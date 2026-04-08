@@ -1,14 +1,21 @@
 {%- comment -%}
   SmartNest Pet Tech - Blog Template
-  Display all blog articles
+  Complete blog listing page in English
 {%- endcomment -%}
 
 <div class="blog-page" style="max-width: 1400px; margin: 0 auto; padding: 40px 20px;">
   
   <!-- Blog Header -->
   <section class="blog-header" style="text-align: center; padding: 80px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; margin-bottom: 60px; border-radius: 16px;">
-    <h1 style="font-size: 48px; margin-bottom: 20px; font-weight: 700;">{{ blog.title }}</h1>
-    <p style="font-size: 20px; opacity: 0.9; max-width: 800px; margin: 0 auto;">Tips, tricks, and insights for modern pet parents!</p>
+    <h1 style="font-size: 48px; margin-bottom: 15px; font-weight: 700;">{{ blog.title }}</h1>
+    <p style="font-size: 20px; opacity: 0.9; max-width: 800px; margin: 0 auto;">
+      Tips, tricks, and insights for modern pet parents!
+    </p>
+    {% if blog.articles_count > 0 %}
+      <p style="font-size: 16px; opacity: 0.8; margin-top: 20px;">
+        📰 {{ blog.articles_count }} Articles | 🐾 Pet Care Tips | 🎓 Expert Advice
+      </p>
+    {% endif %}
   </section>
 
   <!-- Blog Posts Grid -->
@@ -16,12 +23,12 @@
     <div class="container">
       
       {% if blog.articles_count > 0 %}
-        {% for article in blog.articles limit: 10 %}
+        {% for article in blog.articles %}
           <article class="blog-post" style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); margin-bottom: 40px;">
             <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start;">
               <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 12px; text-align: center; color: #fff;">
                 <div style="font-size: 72px; margin-bottom: 20px;">📰</div>
-                <h2 style="font-size: 24px; margin-bottom: 15px;">{{ article.title }}</h2>
+                <h2 style="font-size: 24px; margin-bottom: 15px; line-height: 1.3;">{{ article.title }}</h2>
                 <p style="opacity: 0.9; font-size: 14px; margin-bottom: 20px;">
                   By {{ article.author }} | {{ article.published_at | date: '%B %d, %Y' }}
                 </p>
@@ -35,7 +42,7 @@
                   {% if article.tags.size > 0 %}
                     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
                       {% for tag in article.tags limit: 5 %}
-                        <span style="padding: 6px 16px; background: #f8f9fa; border-radius: 50px; font-size: 14px; color: #667eea;">#{{ tag }}</span>
+                        <span style="background: #f8f9fa; color: #667eea; padding: 6px 16px; border-radius: 50px; font-size: 14px; font-weight: 600;">#{{ tag }}</span>
                       {% endfor %}
                     </div>
                   {% endif %}
@@ -45,23 +52,28 @@
           </article>
         {% endfor %}
       {% else %}
-        <div style="text-align: center; padding: 60px 0;">
-          <h2 style="font-size: 32px; color: #212529; margin-bottom: 20px;">No articles yet</h2>
-          <p style="color: #666; font-size: 18px;">Check back soon for pet care tips and insights!</p>
+        <!-- No Articles -->
+        <div style="text-align: center; padding: 100px 20px;">
+          <div style="font-size: 120px; margin-bottom: 30px;">📝</div>
+          <h2 style="font-size: 36px; color: #212529; margin-bottom: 20px;">No Articles Yet</h2>
+          <p style="color: #666; font-size: 18px; margin-bottom: 40px;">Check back soon for pet care tips and insights!</p>
+          <a href="/collections/all" style="display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-decoration: none; border-radius: 50px; font-size: 18px; font-weight: 600;">Browse Products</a>
         </div>
       {% endif %}
 
       <!-- Pagination -->
       {% if paginate.pages > 1 %}
-        <div style="text-align: center; margin-top: 40px;">
+        <div class="pagination" style="text-align: center; margin-top: 60px;">
           {% if paginate.previous %}
-            <a href="{{ paginate.previous.url }}" class="btn" style="background: #667eea; color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 0 10px;">Previous</a>
+            <a href="{{ paginate.previous.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">← Previous Page</a>
           {% endif %}
           
-          <span style="color: #666; font-size: 16px;">Page {{ paginate.current_page }} of {{ paginate.pages }}</span>
+          <span style="display: inline-block; padding: 14px 28px; color: #666; font-size: 16px; font-weight: 600;">
+            Page {{ paginate.current_page }} of {{ paginate.pages }}
+          </span>
           
           {% if paginate.next %}
-            <a href="{{ paginate.next.url }}" class="btn" style="background: #667eea; color: #fff; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; margin: 0 10px;">Next</a>
+            <a href="{{ paginate.next.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">Next Page →</a>
           {% endif %}
         </div>
       {% endif %}
