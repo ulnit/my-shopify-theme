@@ -9,11 +9,11 @@
   <section class="collection-header" style="text-align: center; padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; margin-bottom: 60px; border-radius: 16px;">
     <h1 style="font-size: 48px; margin-bottom: 15px; font-weight: 700;">{{ collection.title }}</h1>
     <p style="font-size: 20px; opacity: 0.9; max-width: 800px; margin: 0 auto;">
-      {{ collection.description | default: 'Discover our complete range of smart pet care products. From智能摄像头 to GPS trackers, automatic feeders to smart litter boxes - everything you need to keep your pets safe, healthy, and happy!' }}
+      {{ collection.description | default: 'Discover our complete range of smart pet care products. From smart cameras to GPS trackers, automatic feeders to smart litter boxes - everything you need to keep your pets safe, healthy, and happy!' }}
     </p>
     {% if collection.products_count > 0 %}
       <p style="font-size: 16px; opacity: 0.8; margin-top: 20px;">
-        📦 {{ collection.products_count }} Products | 🌍 Worldwide Shipping | ✅ 30-Day Returns
+        📦 {{ collection.products_count }} Products | 🌍 Worldwide Shipping | ✅ 30-Day Returns | 🔒 Secure Checkout
       </p>
     {% endif %}
   </section>
@@ -26,7 +26,7 @@
       <strong>{{ collection.products_count }}</strong> Products
       {% if current_tags %}
         <span style="margin-left: 10px;">🏷️ Filtered by: {{ current_tags | join: ', ' }}</span>
-        <a href="{{ collection.url }}" style="margin-left: 10px; color: #667eea; text-decoration: none;">Clear All</a>
+        <a href="{{ collection.url }}" style="margin-left: 10px; color: #667eea; text-decoration: none; font-weight: 600;">Clear All Filters</a>
       {% endif %}
     </div>
 
@@ -36,19 +36,19 @@
       <!-- Sort By -->
       <div class="sort-by" style="position: relative;">
         <select onchange="location = this.value;" style="padding: 12px 20px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; background: #fff; cursor: pointer;">
-          <option value="{{ collection.url }}" {% if collection.sort_by == blank %}selected{% endif %}>Featured</option>
-          <option value="{{ collection.url }}?sort_by=best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
-          <option value="{{ collection.url }}?sort_by=title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
-          <option value="{{ collection.url }}?sort_by=price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
-          <option value="{{ collection.url }}?sort_by=price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
-          <option value="{{ collection.url }}?sort_by=created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Newest</option>
+          <option value="{{ collection.url }}" {% if collection.sort_by == blank %}selected{% endif %}>✨ Featured</option>
+          <option value="{{ collection.url }}?sort_by=best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>🔥 Best Selling</option>
+          <option value="{{ collection.url }}?sort_by=title-ascending" {% if collection.sort_by == 'title-ascending' %}selected{% endif %}>A to Z</option>
+          <option value="{{ collection.url }}?sort_by=price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>💰 Price: Low to High</option>
+          <option value="{{ collection.url }}?sort_by=price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>💰 Price: High to Low</option>
+          <option value="{{ collection.url }}?sort_by=created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>⭐ Newest</option>
         </select>
       </div>
 
       <!-- Filter by Type -->
       <div class="filter-by" style="position: relative;">
         <select onchange="if(this.value) window.location.href='{{ collection.url }}?constraint=' + this.value" style="padding: 12px 20px; border: 2px solid #ddd; border-radius: 8px; font-size: 16px; background: #fff; cursor: pointer;">
-          <option value="">All Types</option>
+          <option value="">📋 All Types</option>
           {% for type in collection.all_types %}
             <option value="{{ type | handle }}" {% if current_type == type %}selected{% endif %}>{{ type }}</option>
           {% endfor %}
@@ -175,15 +175,15 @@
       {% if paginate.pages > 1 %}
         <div class="pagination" style="text-align: center; margin-top: 60px;">
           {% if paginate.previous %}
-            <a href="{{ paginate.previous.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">← Previous</a>
+            <a href="{{ paginate.previous.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">← Previous Page</a>
           {% endif %}
           
-          <span style="display: inline-block; padding: 14px 28px; color: #666; font-size: 16px;">
+          <span style="display: inline-block; padding: 14px 28px; color: #666; font-size: 16px; font-weight: 600;">
             Page {{ paginate.current_page }} of {{ paginate.pages }}
           </span>
           
           {% if paginate.next %}
-            <a href="{{ paginate.next.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">Next →</a>
+            <a href="{{ paginate.next.url }}" style="display: inline-block; padding: 14px 28px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 16px; font-weight: 600; margin: 0 10px;">Next Page →</a>
           {% endif %}
         </div>
       {% endif %}
@@ -193,9 +193,9 @@
       <!-- No Products -->
       <div style="text-align: center; padding: 100px 20px;">
         <div style="font-size: 120px; margin-bottom: 30px;">🔍</div>
-        <h2 style="font-size: 36px; color: #212529; margin-bottom: 20px;">No products found</h2>
-        <p style="color: #666; font-size: 18px; margin-bottom: 40px;">Try adjusting your filters or check back later for new products!</p>
-        <a href="/collections/all" style="display: inline-block; padding: 16px 40px; background: #667eea; color: #fff; text-decoration: none; border-radius: 50px; font-size: 18px; font-weight: 600;">View All Products</a>
+        <h2 style="font-size: 36px; color: #212529; margin-bottom: 20px;">No Products Found</h2>
+        <p style="color: #666; font-size: 18px; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">Try adjusting your filters or check back later for new products!</p>
+        <a href="/collections/all" style="display: inline-block; padding: 16px 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; text-decoration: none; border-radius: 50px; font-size: 18px; font-weight: 600; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">Browse All Products</a>
       </div>
     
     {% endif %}
