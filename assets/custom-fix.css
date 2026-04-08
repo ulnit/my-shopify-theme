@@ -1,0 +1,280 @@
+/* SmartNest Pet Tech - Custom CSS Fixes */
+/* 修复白色背景白色字体问题 + 主题优化 */
+
+/* ========== Subscribe & Save Section Fix ========== */
+/* 背景改为浅灰色，避免白底白字 */
+.shopify-section--newsletter,
+.newsletter-section,
+.subscribe-section,
+.subscription-banner,
+[data-section-type="newsletter"],
+#shopify-section-featured-collection,
+#shopify-section-email-signup {
+  background: #f5f5f5 !important;
+  background-color: #f5f5f5 !important;
+  background-image: linear-gradient(135deg, #f5f5f5 0%, #e9ecef 100%) !important;
+}
+
+/* 文字颜色改为深灰色，确保可见 */
+.shopify-section--newsletter h2,
+.shopify-section--newsletter h3,
+.shopify-section--newsletter h4,
+.shopify-section--newsletter p,
+.shopify-section--newsletter span,
+.shopify-section--newsletter div,
+.newsletter-section h2,
+.newsletter-section h3,
+.newsletter-section h4,
+.newsletter-section p,
+.newsletter-section span,
+.subscribe-section h2,
+.subscribe-section h3,
+.subscribe-section h4,
+.subscribe-section p,
+.subscription-banner h2,
+.subscription-banner h3,
+.subscription-banner h4,
+.subscription-banner p {
+  color: #212529 !important;
+  color: #333333 !important;
+}
+
+/* 确保所有文本类可见 */
+.newsletter-section .text-white,
+.subscribe-section .text-white,
+.subscription-banner .text-white,
+.newsletter-section .text-body,
+.subscribe-section .text-body,
+.subscription-banner .text-body {
+  color: #212529 !important;
+}
+
+/* 输入框样式优化 */
+.newsletter-section input[type="email"],
+.subscribe-section input[type="email"],
+.subscription-banner input[type="email"],
+.newsletter-section input[type="text"],
+.subscribe-section input[type="text"] {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  border: 1px solid #cccccc !important;
+  border-color: #cccccc !important;
+}
+
+.newsletter-section input::placeholder,
+.subscribe-section input::placeholder,
+.subscription-banner input::placeholder {
+  color: #999999 !important;
+}
+
+/* 按钮样式 */
+.newsletter-section button,
+.subscribe-section button,
+.subscription-banner button,
+.newsletter-section input[type="submit"],
+.subscribe-section input[type="submit"] {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #000000 !important;
+}
+
+.newsletter-section button:hover,
+.subscribe-section button:hover,
+.subscription-banner button:hover,
+.newsletter-section input[type="submit"]:hover,
+.subscribe-section input[type="submit"]:hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* ========== 通用对比度修复 ========== */
+/* 白色背景区域 */
+.bg-white,
+.background-white,
+.section-white {
+  background-color: #ffffff !important;
+}
+
+/* 确保白色背景上的文字可见 */
+.bg-white *,
+.bg-white h1,
+.bg-white h2,
+.bg-white h3,
+.bg-white h4,
+.bg-white h5,
+.bg-white h6,
+.bg-white p,
+.bg-white span,
+.bg-white div,
+.bg-white a {
+  color: #212529 !important;
+}
+
+/* 浅色背景区域 */
+.bg-light,
+.background-light,
+.section-light {
+  background-color: #f8f9fa !important;
+}
+
+/* ========== 链接颜色优化 ========== */
+.newsletter-section a,
+.subscribe-section a,
+.subscription-banner a {
+  color: #0066cc !important;
+  text-decoration: underline !important;
+}
+
+.newsletter-section a:hover,
+.subscribe-section a:hover,
+.subscription-banner a:hover {
+  color: #0052a3 !important;
+}
+
+/* ========== Hero Banner 优化 ========== */
+.hero-banner,
+.hero-section,
+#shopify-section-hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: #ffffff !important;
+}
+
+.hero-banner h1,
+.hero-banner h2,
+.hero-section h1,
+.hero-section h2 {
+  color: #ffffff !important;
+}
+
+/* ========== Featured Products 优化 ========== */
+.featured-products,
+.featured-collection,
+#shopify-section-featured-products {
+  background-color: #f8f9fa !important;
+}
+
+/* ========== Section 通用样式 ========== */
+.section-primary {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+}
+
+.section-secondary {
+  background-color: #f8f9fa !important;
+  color: #212529 !important;
+}
+
+/* ========== 移动端优化 ========== */
+@media (max-width: 768px) {
+  .newsletter-section,
+  .subscribe-section,
+  .subscription-banner {
+    background: #f0f0f0 !important;
+  }
+  
+  .newsletter-section h2,
+  .subscribe-section h2,
+  .subscription-banner h2 {
+    font-size: 24px !important;
+  }
+  
+  .newsletter-section p,
+  .subscribe-section p,
+  .subscription-banner p {
+    font-size: 14px !important;
+  }
+}
+
+/* ========== 产品卡片优化 ========== */
+.product-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.product-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+/* ========== 按钮通用样式 ========== */
+.btn,
+.button,
+.action-button {
+  transition: all 0.3s ease !important;
+}
+
+.btn:hover,
+.button:hover,
+.action-button:hover {
+  transform: translateY(-2px) !important;
+}
+
+/* ========== 页脚优化 ========== */
+.footer,
+.site-footer {
+  background-color: #1A1A2E !important;
+  color: #ffffff !important;
+}
+
+.footer a,
+.site-footer a {
+  color: rgba(255,255,255,0.8) !important;
+}
+
+.footer a:hover,
+.site-footer a:hover {
+  color: #ffffff !important;
+}
+
+/* ========== 加载动画 ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* ========== 工具类 ========== */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  border: 0 !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-right {
+  text-align: right !important;
+}
+
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: 0.5rem !important; }
+.mb-2 { margin-bottom: 1rem !important; }
+.mb-3 { margin-bottom: 1.5rem !important; }
+.mb-4 { margin-bottom: 2rem !important; }
+
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: 0.5rem !important; }
+.mt-2 { margin-top: 1rem !important; }
+.mt-3 { margin-top: 1.5rem !important; }
+.mt-4 { margin-top: 2rem !important; }

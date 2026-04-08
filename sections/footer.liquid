@@ -1,0 +1,50 @@
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__column">
+        <h3 class="footer__title">About SmartNest</h3>
+        <p>Your trusted partner in smart pet care solutions. We believe every pet deserves the best care.</p>
+      </div>
+
+      <div class="footer__column">
+        <h3 class="footer__title">Quick Links</h3>
+        <ul class="footer__links">
+          <li><a href="/collections/all">All Products</a></li>
+          <li><a href="/pages/about">About Us</a></li>
+          <li><a href="/pages/contact">Contact</a></li>
+          <li><a href="/blogs/news">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__column">
+        <h3 class="footer__title">Customer Care</h3>
+        <ul class="footer__links">
+          <li><a href="/pages/shipping">Shipping Info</a></li>
+          <li><a href="/pages/returns">Returns</a></li>
+          <li><a href="/pages/faq">FAQ</a></li>
+          <li><a href="/pages/privacy">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__column">
+        <h3 class="footer__title">Contact Us</h3>
+        <ul class="footer__links">
+          <li>📧 support@smartnest.com</li>
+          <li>📱 +86 755 1234 5678</li>
+          <li>📍 Shenzhen, China</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

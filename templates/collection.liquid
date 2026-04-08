@@ -1,0 +1,29 @@
+{%- comment -%}
+  SmartNest Pet Tech - Collection Template
+{%- endcomment -%}
+
+<div class="container">
+  <h1 class="collection__title">{{ collection.title }}</h1>
+  <p class="collection__description">{{ collection.description }}</p>
+  
+  <div class="product-grid">
+    {%- for product in collection.products -%}
+      <div class="product-card">
+        {%- if product.featured_media -%}
+          <img 
+            src="{{ product.featured_media | image_url: width: 600 }}" 
+            alt="{{ product.title }}"
+            class="product-card__image"
+            loading="lazy"
+          >
+        {%- endif -%}
+        
+        <div class="product-card__info">
+          <h3 class="product-card__title">{{ product.title }}</h3>
+          <p class="product-card__price">{{ product.price | money }}</p>
+          <a href="{{ product.url }}" class="btn">View Product</a>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
