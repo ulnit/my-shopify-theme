@@ -8,7 +8,11 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
+{%- if collection and collection.handle == "all" -%}
+<meta property="og:title" content="All Products">
+{%- else -%}
 <meta property="og:title" content="{{ page_title }}">
+{%- endif -%}
 <meta property="og:site_name" content="{{ shop.name }}">
 
 {% if page_description %}
@@ -21,7 +25,11 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
+{%- if collection and collection.handle == "all" -%}
+<meta name="twitter:title" content="All Products">
+{%- else -%}
 <meta name="twitter:title" content="{{ page_title }}">
+{%- endif -%}
 
 {% if page_description %}
   <meta name="twitter:description" content="{{ page_description | escape }}">
