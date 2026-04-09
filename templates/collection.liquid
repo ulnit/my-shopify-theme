@@ -7,7 +7,7 @@
   
   <!-- Collection Header -->
   <section class="collection-header" style="text-align: center; padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #fff; margin-bottom: 60px; border-radius: 16px;">
-    <h1 style="font-size: 48px; margin-bottom: 15px; font-weight: 700;">{{ collection.title }}</h1>
+    <h1 style="font-size: 48px; margin-bottom: 15px; font-weight: 700;">{%- if collection.handle == "all" -%}All Products{%- else -%}{{ collection.title }}{%- endif -%}</h1>
     <p style="font-size: 20px; opacity: 0.9; max-width: 800px; margin: 0 auto;">
       {{ collection.description | default: 'Discover our complete range of smart pet care products. From smart cameras to GPS trackers, automatic feeders to smart litter boxes - everything you need to keep your pets safe, healthy, and happy!' }}
     </p>
